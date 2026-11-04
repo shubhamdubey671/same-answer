@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Same Answer</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <header class="top">
+      <div class="brand">
+        <span class="logo" aria-hidden="true">
+          <svg viewBox="0 0 128 128" width="20" height="20"><path d="M76 8 L26 72 H58 L48 120 L102 52 H70 Z" fill="currentColor" stroke="currentColor" stroke-width="4" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="brand-text">
+          <h1>Same Answer</h1>
+          <p>Naukri · LinkedIn</p>
+        </div>
+      </div>
+      <span id="count" class="count">0 answers</span>
+    </header>
+
+    <section id="account" class="account" hidden></section>
+
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button id="tab-answers" class="tab" type="button" role="tab" data-mode="answers">Answers</button>
+      <button id="tab-activity" class="tab" type="button" role="tab" data-mode="activity">Activity</button>
+      <button id="tab-settings" class="tab" type="button" role="tab" data-mode="settings">Settings</button>
+    </nav>
+
+    <div id="toolbar" class="toolbar">
+      <div class="sites" role="group" aria-label="Filter by site">
+        <button class="site-chip" type="button" data-site="">All</button>
+        <button class="site-chip" type="button" data-site="naukri">Naukri</button>
+        <button class="site-chip" type="button" data-site="linkedin">LinkedIn</button>
+      </div>
+      <label class="search">
+        <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/></svg>
+        <input id="search" type="search" placeholder="Search" autocomplete="off" aria-label="Search questions and answers" />
+      </label>
+    </div>
+
+    <main id="list" class="list" aria-live="polite"></main>
+
+    <section id="settings" class="settings" hidden>
+      <div class="group">
+        <h2>LinkedIn Easy Apply</h2>
+        <label class="row">
+          <span class="row-text">
+            <span class="row-title">Submit automatically</span>
+            <span class="row-desc">Click “Submit application” once every field is filled. Off: the extension stops at Submit so you can review.</span>
+          </span>
+          <span class="switch">
+            <input id="linkedin-auto-submit" type="checkbox" role="switch" />
+            <span class="switch-track" aria-hidden="true"></span>
+          </span>
+        </label>
+      </div>
+
+      <div class="group">
+        <h2>Backup file</h2>
+        <p class="group-desc">Save every answer to a file, or bring answers back from one. Answers already here are kept; for a question on both sides, the more recently used one wins.</p>
+        <div class="button-row">
+          <button id="export" class="btn" type="button">Export</button>
+          <button id="import" class="btn" type="button">Import</button>
+          <input id="import-file" type="file" accept="application/json,.json" hidden />
+        </div>
+      </div>
+
+      <div class="group">
+        <h2>Clean up</h2>
+        <div class="button-row">
+          <button id="clear-log" class="btn" type="button">Clear activity log</button>
+          <button id="clear-all" class="btn btn-danger" type="button">Delete all answers</button>
+        </div>
+      </div>
+    </section>
+
+    <div id="toast" class="toast" role="status" aria-live="polite" hidden>
+      <span id="toast-text"></span>
+      <button id="toast-action" class="toast-action" type="button" hidden></button>
+    </div>
+
+    <dialog id="dialog" class="dialog">
+      <form method="dialog">
+        <h2 id="dialog-title"></h2>
+        <p id="dialog-body"></p>
+        <div id="dialog-actions" class="dialog-actions"></div>
+      </form>
+    </dialog>
+
+    <script src="../shared/storage.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

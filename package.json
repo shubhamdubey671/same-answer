@@ -1,0 +1,13 @@
+{
+  "name": "same-answer",
+  "version": "1.0.0",
+  "private": true,
+  "license": "MIT",
+  "description": "Chrome extension that fills repeated screening questions on Naukri and LinkedIn Easy Apply.",
+  "scripts": {
+    "check": "node scripts/check-extension.js",
+    "test": "node test/storage.test.js",
+    "verify": "npm run check && npm test",
+    "icons": "scripts/build-icons.sh"
+  }
+}
